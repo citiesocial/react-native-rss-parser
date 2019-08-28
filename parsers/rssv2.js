@@ -25,6 +25,7 @@ function mapChannelFields(document, parsedFeed) {
   parsedFeed.title = getChannelTitle(channelNode);
   parsedFeed.links = getChannelLinks(channelNode);
   parsedFeed.description = getChannelDescription(channelNode);
+  parsedFeed.img_url = getChannelThumbnail(channelNode);
   parsedFeed.language = getChannelLanguage(channelNode);
   parsedFeed.copyright = getChannelCopyright(channelNode);
   parsedFeed.authors = getChannelAuthors(channelNode);
@@ -53,6 +54,10 @@ function getChannelLinks(node) {
 }
 
 function getChannelDescription(node) {
+  return utils.getElementTextContent(node, 'description');
+}
+
+function getChannelThumbnail(node) {
   return utils.getElementTextContent(node, 'description');
 }
 
@@ -135,6 +140,10 @@ function getItemDescription(node) {
   return utils.getElementTextContent(node, 'description');
 }
 
+function getItemThumbnail(node) {
+  return utils.getElementTextContent(node, 'img:thumbnail');
+}
+
 function getItemContent(node) {
   return utils.getElementTextContent(node, 'encoded', namespaces.content);
 }
@@ -195,6 +204,7 @@ function mapItems(document) {
       title: getItemTitle(item),
       links: getItemLinks(item),
       description: getItemDescription(item),
+      img_url: getChannelThumbnail(item),
       content: getItemContent(item),
       id: getItemId(item),
       authors: getItemAuthors(item),
