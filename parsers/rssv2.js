@@ -58,7 +58,7 @@ function getChannelDescription(node) {
 }
 
 function getChannelThumbnail(node) {
-  return utils.getElementTextContent(node, 'description');
+  return utils.getElementTextContent(node, 'img:thumbnail');
 }
 
 function getChannelLanguage(node) {
